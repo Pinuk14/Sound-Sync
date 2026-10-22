@@ -11,6 +11,9 @@ devices:
   mic:
     match_primary: "Audiocular D07"
     match_backup: "Intelr Smart Sound Technology for Digital Microphones"
+  fallbacks:
+    wired_front: "Audiocular D07"
+    system_default: "Speakers (Realtek(R) Audio)"
 latency:
   auto:
     enabled: true

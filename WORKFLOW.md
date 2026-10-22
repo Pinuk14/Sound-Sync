@@ -76,33 +76,33 @@ Python 3.11+, `numpy`, `scipy`, `soundfile`, `librosa`, `matplotlib`, `sounddevi
 
 ## PART E: Milestones
 
-### M0: Setup, feasibility, hardware
+### M0: Setup, feasibility, hardware [COMPLETED - PASS: evidence/M0/GATE.md]
 
 **Tasks**
-1. Repo skeleton, venv, `pyproject.toml`, ruff + pytest, `config/default.yaml` stub, copy `ARCHITECTURE.md` to `docs/`.
-2. **Ask me:** OS, PC model, both speaker models, BT adapter version, available codecs, wired inputs, **microphone availability** (type and position options).
-3. `docs/HARDWARE.md` with real answers.
-4. `tools/list_devices.py` listing all output/input devices (index, name, host API, channels, sample rate, default latencies).
-5. **Feasibility research (cited) in `docs/DECISIONS.md`:** can this OS keep two BT speakers connected as separate output devices simultaneously? Fallbacks (USB BT adapter, one wired speaker).
-6. Write the initial **latency budget** table (expected BT latency per codec, buffers, algorithmic look-ahead).
+1. Repo skeleton, venv, `pyproject.toml`, ruff + pytest, `config/default.yaml` stub, copy `ARCHITECTURE.md` to `docs/`. [DONE]
+2. **Ask me:** OS, PC model, both speaker models, BT adapter version, available codecs, wired inputs, **microphone availability** (type and position options). [DONE]
+3. `docs/HARDWARE.md` with real answers. [DONE]
+4. `tools/list_devices.py` listing all output/input devices (index, name, host API, channels, sample rate, default latencies). [DONE]
+5. **Feasibility research (cited) in `docs/DECISIONS.md`:** can this OS keep two BT speakers connected as separate output devices simultaneously? Fallbacks (USB BT adapter, one wired speaker). [DONE]
+6. Write the initial **latency budget** table (expected BT latency per codec, buffers, algorithmic look-ahead). [DONE]
 
-**GATE M0:** tests run in a fresh venv; both speakers (or the documented fallback) appear as separate outputs; `HARDWARE.md` complete; feasibility finding saved with sources.
+**GATE M0:** tests run in a fresh venv; both speakers (or the documented fallback) appear as separate outputs; `HARDWARE.md` complete; feasibility finding saved with sources. [PASSED - 2026-10-22]
 
 ---
 
-### M1: Audio laboratory (movies and music)
+### M1: Audio laboratory (movies and music) [COMPLETED - PASS: evidence/M1/GATE.md]
 
-**Tasks:** FFmpeg decode to float32 PCM with metadata and channel layout (no silent downmix); `speakersync inspect` (sample rate, channels, layout labels, duration, per-channel peak/RMS/crest/DC, **LUFS integrated/short-term**); signal generators (sine, log sweep, click train, pink/white noise, silence, speech-like AM noise, **synthetic scene builder**); plots (waveform, spectrum, spectrogram).
+**Tasks:** FFmpeg decode to float32 PCM with metadata and channel layout (no silent downmix); `speakersync inspect` (sample rate, channels, layout labels, duration, per-channel peak/RMS/crest/DC, **LUFS integrated/short-term**); signal generators (sine, log sweep, click train, pink/white noise, silence, speech-like AM noise, **synthetic scene builder**); plots (waveform, spectrum, spectrogram). [DONE]
 
 **Synthetic scene builder** (used by M2/M10/M14), each segment has known truth:
-- S1 dialogue: speech-like noise 200-4000 Hz, -23 LUFS
-- S2 small sounds: soft clicks/noise bursts, -40 LUFS
-- S3 explosion: broadband + <100 Hz burst, peak -8 dBFS
-- S4 dialogue + explosion simultaneously
-- S5 music-like: kick, bass, chord pad, "vocal" lead panned center, hi-hats
-- S6 quiet room tone
+- S1 dialogue: speech-like noise 200-4000 Hz, -23 LUFS [DONE]
+- S2 small sounds: soft clicks/noise bursts, -40 LUFS [DONE]
+- S3 explosion: broadband + <100 Hz burst, peak -8 dBFS [DONE]
+- S4 dialogue + explosion simultaneously [DONE]
+- S5 music-like: kick, bass, chord pad, "vocal" lead panned center, hi-hats [DONE]
+- S6 quiet room tone [DONE]
 
-**GATE M1:** inspect works on stereo, 5.1 (synthetic OK), video container, and a music file (FLAC/MP3); numeric tests pass (1 kHz at -6 dBFS → peak ≈ -6.0 ± 0.1 dB, RMS ≈ -9.0 ± 0.1 dB); 6-channel tone-per-channel test identified correctly; plots generated and explained.
+**GATE M1:** inspect works on stereo, 5.1 (synthetic OK), video container, and a music file (FLAC/MP3); numeric tests pass (1 kHz at -6 dBFS → peak ≈ -6.0 ± 0.1 dB, RMS ≈ -9.0 ± 0.1 dB); 6-channel tone-per-channel test identified correctly; plots generated and explained. [PASSED - 2026-10-22]
 
 ---
 

@@ -1,0 +1,67 @@
+{
+  "sample_rate": 48000,
+  "segment_duration_s": 2.0,
+  "total_duration_s": 12.0,
+  "segments": [
+    {
+      "id": 1,
+      "name": "S1_dialogue",
+      "start_sample": 0,
+      "end_sample": 96000,
+      "start_time_s": 0.0,
+      "end_time_s": 2.0,
+      "target": "Dialogue: 200-4000 Hz, -23 LUFS",
+      "router_expectation": "FRONT >= BACK + 10 dB"
+    },
+    {
+      "id": 2,
+      "name": "S2_small_sounds",
+      "start_sample": 96000,
+      "end_sample": 192000,
+      "start_time_s": 2.0,
+      "end_time_s": 4.0,
+      "target": "Small sounds: soft clicks, -40 LUFS",
+      "router_expectation": "FRONT >= BACK + 6 dB"
+    },
+    {
+      "id": 3,
+      "name": "S3_explosion",
+      "start_sample": 192000,
+      "end_sample": 288000,
+      "start_time_s": 4.0,
+      "end_time_s": 6.0,
+      "target": "Explosion: broadband + <100 Hz, peak -8 dBFS",
+      "router_expectation": "BACK >= FRONT + 3 dB"
+    },
+    {
+      "id": 4,
+      "name": "S4_dialogue_explosion",
+      "start_sample": 288000,
+      "end_sample": 384000,
+      "start_time_s": 6.0,
+      "end_time_s": 8.0,
+      "target": "Dialogue + Explosion simultaneous",
+      "router_expectation": "BACK elevated, FRONT dialogue loss <= 1 dB"
+    },
+    {
+      "id": 5,
+      "name": "S5_music",
+      "start_sample": 384000,
+      "end_sample": 480000,
+      "start_time_s": 8.0,
+      "end_time_s": 10.0,
+      "target": "Music: kick, bass, pad, center lead",
+      "router_expectation": "Kick/bass to BACK, lead vocals to FRONT"
+    },
+    {
+      "id": 6,
+      "name": "S6_room_tone",
+      "start_sample": 480000,
+      "end_sample": 576000,
+      "start_time_s": 10.0,
+      "end_time_s": 12.0,
+      "target": "Room tone: quiet noise floor",
+      "router_expectation": "No BACK pumping (gain variation < 1 dB)"
+    }
+  ]
+}

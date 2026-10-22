@@ -1,0 +1,29 @@
+{
+  "sample_rate": 48000,
+  "num_channels": 2,
+  "channel_layout": "stereo",
+  "channel_labels": [
+    "L",
+    "R"
+  ],
+  "duration_seconds": 12.0,
+  "num_samples": 576000,
+  "peak_dbfs": [
+    -5.168394088745117,
+    -5.168394088745117
+  ],
+  "rms_dbfs": [
+    -22.962432861328125,
+    -22.963104248046875
+  ],
+  "crest_factor_db": [
+    17.794038772583008,
+    17.794710159301758
+  ],
+  "dc_offset": [
+    5.010445966036059e-05,
+    5.230310125625692e-05
+  ],
+  "integrated_lufs": -19.17806173574964,
+  "max_short_term_lufs": -17.91152342039277
+}
