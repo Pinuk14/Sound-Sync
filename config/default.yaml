@@ -1,0 +1,46 @@
+profile: default
+devices:
+  front:
+    match: "HBTS001"
+    distance_m: 0.5
+    polarity: normal
+  back:
+    match: "Pure Sound Pro III"
+    distance_m: 1.5
+    polarity: normal
+  mic:
+    match_primary: "Audiocular D07"
+    match_backup: "Intelr Smart Sound Technology for Digital Microphones"
+latency:
+  auto:
+    enabled: true
+    mode: auto_on_connect # off | manual_only | auto_on_connect | auto_periodic
+    apply_threshold_ms: 3.0
+    base_ms:
+      front: 0.0
+      back: 0.0
+    confidence:
+      front: 0.0
+      back: 0.0
+  manual:
+    trim_ms:
+      front: 0.0
+      back: 0.0
+    global_av_offset_ms: 0.0
+mode: movie
+immersion: 0.7
+levels:
+  front_trim_db: 0.0
+  back_trim_db: 0.0
+  back_cap_dbfs: -6.0
+router:
+  hop_ms: 10
+  lookahead_ms: 30
+  event:
+    w_rel: 0.5
+    w_flux: 0.3
+    w_low: 0.2
+    attack_ms: 15
+    release_ms: 350
+  dialogue_guard: 0.8
+  dialogue_leak_db: -18
